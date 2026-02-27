@@ -1,0 +1,64 @@
+title: "Mariana In España"
+description: "An American navigating medical school in Spain — documenting every step for students and expats who want to do the same."
+url: "https://yourusername.github.io"
+baseurl: ""
+author: "Mariana"
+email: ""
+timezone: Europe/Madrid
+lang: en
+
+# Social links - fill these in
+tiktok: "marianaInEspana"
+instagram: ""
+youtube: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  resources:
+    output: true
+    permalink: /resources/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Mariana
+  - scope:
+      path: ""
+      type: resources
+    values:
+      layout: resource
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+
+# Categories for nav
+nav_categories:
+  - name: "Med School Spain"
+    slug: "med-school-spain"
+  - name: "Visa & Paperwork"
+    slug: "visa-paperwork"
+  - name: "American Expat"
+    slug: "american-expat"
+  - name: "Daily Life"
+    slug: "daily-life"
+  - name: "Study Tips"
+    slug: "study-tips"

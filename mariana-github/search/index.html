@@ -1,0 +1,57 @@
+---
+layout: default
+title: "Search"
+permalink: /search/
+---
+
+<div class="page-hero">
+  <h1 class="page-hero-title">Search</h1>
+  <p class="page-hero-sub">Find posts about med school, visas, expat life and more</p>
+</div>
+
+<div class="site-main" style="padding-top:2rem;">
+  <div class="content-area">
+
+    <form id="searchForm" style="display:flex;gap:0;margin-bottom:2rem;" action="/search/" method="get">
+      <input
+        type="text"
+        id="searchInput"
+        name="q"
+        class="search-input"
+        placeholder="Try: NIE visa, med school application, cost of living..."
+        style="flex:1;padding:0.75rem 1rem;font-size:1rem;border:1px solid var(--border);border-right:none;background:var(--warm-white);outline:none;border-radius:2px 0 0 2px;"
+        autocomplete="off"
+      >
+      <button type="submit" class="search-btn" style="padding:0.75rem 1.5rem;font-size:0.78rem;">Search</button>
+    </form>
+
+    <div id="searchResultsHeader" style="margin-bottom:1.5rem;display:none;">
+      <p style="font-size:0.9rem;color:var(--text-light);">Results for: <strong class="search-query-display" style="color:var(--text-dark);"></strong></p>
+    </div>
+
+    <div id="searchResults" class="post-grid"></div>
+
+    <noscript>
+      <p>Search requires JavaScript to be enabled.</p>
+    </noscript>
+
+  </div>
+
+  {% include sidebar.html %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const query  = params.get('q') || '';
+  const input  = document.getElementById('searchInput');
+  const header = document.getElementById('searchResultsHeader');
+
+  if (input && query) input.value = query;
+
+  if (query && header) {
+    header.style.display = 'block';
+    document.querySelectorAll('.search-query-display').forEach(el => el.textContent = query);
+  }
+});
+</script>

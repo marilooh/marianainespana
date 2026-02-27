@@ -1,0 +1,140 @@
+---
+layout: default
+title: "Home"
+---
+
+<!-- HERO -->
+<section class="site-hero">
+  <div class="hero-inner">
+    <div class="hero-tag">American in Spain · Med School · Expat Life</div>
+    <h1 class="hero-title">Living, studying &amp;<br><em>surviving</em> in España</h1>
+    <p class="hero-desc">I'm Mariana — an American navigating medical school in Spain and documenting every step for students and expats who want to do the same.</p>
+    <div class="hero-actions">
+      <a href="{{ '/about/' | relative_url }}" class="btn btn-primary">Start Here</a>
+      <a href="{{ '/resources/' | relative_url }}" class="btn btn-secondary">Free Resources →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TOPIC STRIP -->
+<div class="topic-strip">
+  <div class="topic-strip-inner">
+    <span class="topic-label">Browse:</span>
+    <a href="{{ '/' | relative_url }}" class="topic-pill active">All Posts</a>
+    <a href="/category/med-school-spain/" class="topic-pill">Med School Spain</a>
+    <a href="/category/visa-paperwork/" class="topic-pill">Visa & Paperwork</a>
+    <a href="/category/american-expat/" class="topic-pill">American Expat</a>
+    <a href="/category/daily-life/" class="topic-pill">Daily Life</a>
+    <a href="/category/study-tips/" class="topic-pill">Study Tips</a>
+    <a href="{{ '/resources/' | relative_url }}" class="topic-pill">Free Downloads</a>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="site-main">
+  <div class="content-area">
+
+    <!-- FEATURED POST -->
+    {% assign featured = site.posts.first %}
+    {% if featured %}
+    <article class="featured-post">
+      <div class="featured-image">
+        {% if featured.image %}
+          <img src="{{ featured.image | relative_url }}" alt="{{ featured.title }}">
+        {% else %}
+          <div class="featured-image-placeholder">M</div>
+        {% endif %}
+        <span class="featured-badge">Latest</span>
+      </div>
+      <div class="featured-content">
+        <div class="post-category">{{ featured.category | default: "Blog" }}</div>
+        <h2 class="featured-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+        <p class="post-excerpt">{{ featured.excerpt | strip_html | truncatewords: 35 }}</p>
+        <div class="post-meta">
+          <span>{{ featured.date | date: "%B %-d, %Y" }}</span>
+          <span class="meta-dot"></span>
+          <span>{{ featured.content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+        </div>
+        <a href="{{ featured.url | relative_url }}" class="read-more">Read Article →</a>
+      </div>
+    </article>
+    {% else %}
+    <!-- Placeholder when no posts yet -->
+    <article class="featured-post">
+      <div class="featured-image">
+        <div class="featured-image-placeholder">M</div>
+        <span class="featured-badge">Coming Soon</span>
+      </div>
+      <div class="featured-content">
+        <div class="post-category">Med School Spain</div>
+        <h2 class="featured-title">My First Post Is Coming Soon</h2>
+        <p class="post-excerpt">I'm documenting every step of my journey — from the application process to daily life in Spain. Subscribe to be notified when I publish.</p>
+        <a href="{{ '/about/' | relative_url }}" class="read-more">Read About Me →</a>
+      </div>
+    </article>
+    {% endif %}
+
+    <!-- LATEST POSTS -->
+    {% assign posts = site.posts | offset: 1 %}
+    {% if posts.size > 0 %}
+    <div class="section-header" style="margin-top:2.5rem;">
+      <h2 class="section-title">Latest Posts</h2>
+      <a href="/blog/" class="section-link">All Posts →</a>
+    </div>
+
+    <div class="post-grid">
+      {% for post in posts limit:6 %}
+      <article class="post-card">
+        <div class="card-image">
+          {% if post.image %}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+          {% else %}
+            <div class="card-image-placeholder">M</div>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <div class="post-category">{{ post.category | default: "Blog" }}</div>
+          <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 22 }}</p>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            <span class="meta-dot"></span>
+            <span>{{ post.content | number_of_words | divided_by: 200 | plus: 1 }} min</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- RESOURCES SECTION -->
+    <div class="section-header" style="margin-top:3rem;">
+      <h2 class="section-title">Free Resources</h2>
+      <a href="{{ '/resources/' | relative_url }}" class="section-link">All Resources →</a>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-card-icon">📋</div>
+        <h3 class="resource-card-title">US → Spain Med School Checklist</h3>
+        <p class="resource-card-desc">Everything you need before applying to a Spanish medical school with a US undergraduate degree.</p>
+        <a href="{{ '/resources/' | relative_url }}" class="download-btn">↓ Download Free</a>
+      </div>
+      <div class="resource-card olive-accent">
+        <div class="resource-card-icon">🛂</div>
+        <h3 class="resource-card-title">NIE & Student Visa Guide</h3>
+        <p class="resource-card-desc">Step-by-step walkthrough of the Spanish student visa process for Americans — from appointment to approval.</p>
+        <a href="{{ '/resources/' | relative_url }}" class="download-btn">↓ Download Free</a>
+      </div>
+      <div class="resource-card sand-accent">
+        <div class="resource-card-icon">🏠</div>
+        <h3 class="resource-card-title">Moving to Spain Starter Kit</h3>
+        <p class="resource-card-desc">Bank accounts, SIM cards, housing apps, packing lists — everything that surprised me when I arrived.</p>
+        <a href="{{ '/resources/' | relative_url }}" class="download-btn">↓ Download Free</a>
+      </div>
+    </div>
+
+  </div><!-- .content-area -->
+
+  {% include sidebar.html %}
+
+</div><!-- .site-main -->

@@ -1,0 +1,49 @@
+<header class="site-header" role="banner">
+  <div class="header-inner">
+
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      Mariana <em>in</em> España
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Primary navigation">
+      <ul>
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>About</a></li>
+        <li><a href="{{ '/med-school-spain/' | relative_url }}" {% if page.url contains 'med-school' %}class="active"{% endif %}>Med School</a></li>
+        <li><a href="{{ '/expat-life/' | relative_url }}" {% if page.url contains 'expat' %}class="active"{% endif %}>Expat Life</a></li>
+        <li><a href="{{ '/resources/' | relative_url }}" {% if page.url contains 'resource' %}class="active"{% endif %}>Resources</a></li>
+        <li class="nav-cta"><a href="{{ '/contact/' | relative_url }}">Talk to Me</a></li>
+        <li>
+          <button class="nav-search-btn" id="searchToggle" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<div class="search-bar" id="searchBar" role="search">
+  <div class="search-bar-inner">
+    <form id="searchForm" action="{{ '/search/' | relative_url }}" method="get">
+      <div style="display:flex;">
+        <input
+          type="text"
+          id="searchInput"
+          name="q"
+          class="search-input"
+          placeholder="Search posts... e.g. 'NIE visa' or 'med school application'"
+          autocomplete="off"
+        >
+        <button type="submit" class="search-btn">Search</button>
+      </div>
+    </form>
+  </div>
+</div>

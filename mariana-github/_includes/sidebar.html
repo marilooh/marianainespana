@@ -1,0 +1,78 @@
+<aside class="site-sidebar" role="complementary">
+
+  <!-- About -->
+  <div class="widget">
+    <h3 class="widget-title">About Mariana</h3>
+    <div class="author-avatar-placeholder">M</div>
+    <p>Hey! I'm Mariana — an American who packed up and moved to Spain for medical school. I write honestly about the process, the paperwork, and the unexpected joys.</p>
+    <div class="social-links">
+      <a href="https://tiktok.com/@marianaInEspana" class="social-link" target="_blank">TikTok</a>
+      <a href="#" class="social-link">Instagram</a>
+      <a href="{{ '/contact/' | relative_url }}" class="social-link">Email</a>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="widget widget-newsletter">
+    <h3 class="widget-title">Get Updates</h3>
+    <p>New posts, free resources, and honest advice — straight to your inbox.</p>
+    <form class="newsletter-form" action="#" method="post">
+      <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+      <button type="submit" class="newsletter-btn">Subscribe →</button>
+    </form>
+  </div>
+
+  <!-- Downloads -->
+  <div class="widget">
+    <h3 class="widget-title">Free Downloads</h3>
+    <ul class="resource-list">
+      <li class="resource-item">
+        <div class="resource-icon">PDF</div>
+        <div class="resource-info">
+          <div class="resource-name">Med School Application Guide</div>
+          <p class="resource-desc">US degree → Spanish university</p>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div class="resource-icon olive">NIE</div>
+        <div class="resource-info">
+          <div class="resource-name">Visa & NIE Checklist</div>
+          <p class="resource-desc">Student visa step-by-step</p>
+        </div>
+      </li>
+      <li class="resource-item">
+        <div class="resource-icon sand">🏠</div>
+        <div class="resource-info">
+          <div class="resource-name">Moving to Spain Kit</div>
+          <p class="resource-desc">Everything I wish I knew first</p>
+        </div>
+      </li>
+    </ul>
+    <a href="{{ '/resources/' | relative_url }}" class="sidebar-more-link">All Resources →</a>
+  </div>
+
+  <!-- Categories -->
+  <div class="widget">
+    <h3 class="widget-title">Topics</h3>
+    <ul class="cat-list">
+      {% assign all_cats = site.posts | map: "category" | compact | uniq | sort %}
+      {% for cat in all_cats %}
+        {% assign cat_posts = site.posts | where: "category", cat %}
+        <li>
+          <a href="{{ '/category/' | append: cat | slugify | relative_url }}/">
+            {{ cat }}
+            <span class="cat-count">{{ cat_posts.size }}</span>
+          </a>
+        </li>
+      {% endfor %}
+      {% if all_cats.size == 0 %}
+        <li><a href="#">Med School Spain <span class="cat-count">0</span></a></li>
+        <li><a href="#">Visa & Paperwork <span class="cat-count">0</span></a></li>
+        <li><a href="#">American Expat <span class="cat-count">0</span></a></li>
+        <li><a href="#">Daily Life <span class="cat-count">0</span></a></li>
+        <li><a href="#">Study Tips <span class="cat-count">0</span></a></li>
+      {% endif %}
+    </ul>
+  </div>
+
+</aside>
